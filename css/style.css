@@ -15,12 +15,77 @@
 body {
     background-color: #212139;
     color: #fff;
+    transition: .3 ease all;
+}
+
+body.dark {
+    background-color: #f1f1f1;
+    color: #000;
 }
 
 .container {
     max-width: 500px;
     width: 90%;
     margin: 40px auto;
+}
+
+body.dark .container{
+    padding: 40px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, .16);
+}
+
+/* boton switch cambiar modo */
+
+.cont-switch {
+    width: 90%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.switch {
+    background: #343d5b;
+    border-radius: 1000px;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    outline: none;
+}
+
+.switch::after {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background: #f1f1f1;
+    top: 0;
+    left: 0;
+    right: unset;
+    border-radius: 100px;
+    transition:  .3 ease all;
+    box-shadow:  0px 0px 2px 2px rgba(0, 0, 0, .2);
+}
+
+.switch.active {
+    background: orange;
+    color: #000;
+}
+
+.switch.active::after {
+    left: unset;
+    right: 0;
+}
+
+
+.switch span {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    background: none;
+    color: #fff;
 }
 
 /* Logotipo */
@@ -55,9 +120,10 @@ body {
     line-height: 40px;
 }
 
+body.dark .app label { font-weight:700; }
+
 .app input {
     text-align: center;
-    border: none;
 }
 
 .app .btn {
@@ -74,6 +140,7 @@ body {
     cursor: pointer;
     transition: all .3s ease;
 }
+
 
 .app .btn:hover {
     background: #b4a5ff;
@@ -171,13 +238,30 @@ body {
     transition: all .3s ease;
 }
 
+body.dark .app .fila.generar .input-password {
+    border: 1px solid rgba(0, 0, 0, .25);
+    color: #000;
+    font-weight: 700;
+}
+
 .app .fila.generar .input-password:hover {
     border: 1px solid rgba(255, 255, 255, .5);
 }
 
+body.dark .app .fila.generar .input-password:hover {
+    border: 1px solid rgba(0, 0, 0, .5);
+}
+
+
 .app .fila.generar .input-password::selection {
     background-color: #212139;
 }
+
+body.dark .app .fila.generar .input-password::selection {
+    color: #000;
+    background-color: #f1f1f1;
+}
+
 
 /* Fila: Alerta */
 
@@ -199,6 +283,10 @@ body {
     color: rgba(255, 255, 255, 1);
 }
 
+body.dark .app .fila.alerta .alerta-copiado.active {
+    color: rgba(0, 0, 0, .7);
+}
+
 .app .fila.alerta .alerta-copiado p,
 .app .fila.alerta .alerta-copiado i {
     font-size: 14px;
@@ -207,6 +295,11 @@ body {
 /* Media query */
 
 @media screen and (max-width: 500px){
+    .cont-switch {
+        width: 90%;
+        margin: 10px;
+    }
+
     .lolo img {
         width: 60px;
     }
